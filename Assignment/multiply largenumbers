@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Multiplyyyy {
+public class Multiplylargenumbers {
 
     public static String multiply(String num1, String num2) {
 
