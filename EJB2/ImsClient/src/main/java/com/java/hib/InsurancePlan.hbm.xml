@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 26-Oct-2023, 2:46:07 pm by Hibernate Tools 3.6.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.java.hib.InsurancePlan" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="insurance_plans">
+        <id name="planid" type="int">
+            <column name="Plan_id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="insuranceid" optimistic-lock="true" type="int" unique="false">
+            <column name="Insurance_id"/>
+        </property>
+        <property generated="never" lazy="false" name="premiumamt" optimistic-lock="true" type="double" unique="false">
+            <column name="Premium_Amount"/>
+        </property>
+        <property generated="never" lazy="false" name="coverageamt" optimistic-lock="true" type="double" unique="false">
+            <column name="Coverage_Amount"/>
+        </property>
+    </class>
+</hibernate-mapping>

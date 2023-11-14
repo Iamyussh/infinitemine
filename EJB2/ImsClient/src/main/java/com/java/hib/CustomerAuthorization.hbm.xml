@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 25-Oct-2023, 2:13:23 pm by Hibernate Tools 3.6.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.java.hib.CustomerAuthorization" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="customer_authorization">
+        <id name="authId" type="int">
+            <column name="Auth_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="custId" optimistic-lock="true" type="int" unique="false">
+            <column name="Cust_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="otp" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="Otp"/>
+        </property>
+        <property generated="never" lazy="false" name="status" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="Status"/>
+        </property>
+    </class>
+</hibernate-mapping>
