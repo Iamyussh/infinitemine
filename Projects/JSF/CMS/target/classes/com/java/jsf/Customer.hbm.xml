@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 05-Oct-2023, 10:42:05 pm by Hibernate Tools 3.6.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.java.jsf.Customer" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="CUSTOMER">
+        <id name="cusid" type="int">
+            <column name="CUS_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="cusname" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="CUS_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="phoneno" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="CUS_PHN_NO"/>
+        </property>
+        <property generated="never" lazy="false" name="cususername" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="CUS_USERNAME"/>
+        </property>
+        <property generated="never" lazy="false" name="cuspassword" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="CUS_PASSWORD"/>
+        </property>
+        <property generated="never" lazy="false" name="cusemail" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column name="CUS_EMAIL"/>
+        </property>
+    </class>
+</hibernate-mapping>

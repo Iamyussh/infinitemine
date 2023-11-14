@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee /WEB-INF/schema/web-facesconfig_2_0.xsd" 
+              version="2.0" metadata-complete="false">
+    <!-- This file must be present with our jar, even if it is empty.  Otherwise, our Java annotations won't get scanned! -->
+
+
+<managed-bean>
+	<managed-bean-name>restaurant</managed-bean-name>
+   <managed-bean-class>com.java.jsf.Restaurant</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>restaurantDao</managed-bean-name>
+   <managed-bean-class>com.java.jsf.RestaurantDAOImpl</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>menu</managed-bean-name>
+   <managed-bean-class>com.java.jsf.Menu</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>menuDao</managed-bean-name>
+   <managed-bean-class>com.java.jsf.MenuDAOImpl</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>customer</managed-bean-name>
+   <managed-bean-class>com.java.jsf.Customer</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>daoImpl</managed-bean-name>
+   <managed-bean-class>com.java.jsf.CustomerDAOImpl</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+
+<managed-bean>
+	<managed-bean-name>vendor</managed-bean-name>
+   <managed-bean-class>com.java.jsf.Vendor</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>vendorDao</managed-bean-name>
+   <managed-bean-class>com.java.jsf.VendorDAOImpl</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+
+
+<managed-bean>
+	<managed-bean-name>customerDao</managed-bean-name>
+   <managed-bean-class>com.java.jsf.CustomerDAOImpl</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+	<managed-bean-name>customerController</managed-bean-name>
+   <managed-bean-class>com.java.jsf.CustomerController</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+   
+   <managed-property>
+   <property-name>customer</property-name>
+   <property-class>com.java.jsf.Customer</property-class>
+   <value>#{customer}</value>
+   </managed-property>
+   
+   <managed-property>
+   <property-name>daoImpl</property-name>
+   <property-class>com.java.jsf.CustomerDAOImpl</property-class>
+   <value>#{daoImpl}</value>
+   </managed-property>
+   
+   
+   <managed-property>
+   <property-name>restaurantDao</property-name>
+   <property-class>com.java.jsf.RestaurantDAOImpl</property-class>
+   <value>#{restaurantDao}</value>
+   </managed-property>
+</managed-bean>
+
+
+
+</faces-config>
