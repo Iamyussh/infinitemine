@@ -11,7 +11,7 @@
 </managed-bean>
 
 <managed-bean>
-	<managed-bean-name>insuranceplan</managed-bean-name>
+	<managed-bean-name>insurancePlan</managed-bean-name>
    <managed-bean-class>com.java.hib.InsurancePlans</managed-bean-class>
    <managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
@@ -56,10 +56,24 @@
 <value>#{insuranceDetails}</value>
 </managed-property>
 <managed-property>
-<property-name>insuranceDetailsdao</property-name>
-<property-class>com.java.hib.InsuranceDetailsDAOImpl</property-class>
-<value>#{insuranceDetailsdao}</value>
+	<property-name>insuranceDetailsdao</property-name>
+	<property-class>com.java.hib.InsuranceDetailsDAOImpl</property-class>
+	<value>#{insuranceDetailsdao}</value>
 </managed-property>
+
+
+<managed-property>
+	<property-name>insurancePlansdao</property-name>
+	<property-class>com.java.hib.InsurancePlansDAOImpl</property-class>
+	<value>#{insurancePlansdao}</value>
+</managed-property>
+<managed-property>
+	<property-name>insurancePlan</property-name>
+	<property-class>com.java.hib.InsurancePlans</property-class>
+	<value>#{insurancePlan}</value>
+</managed-property>
+
+
 </managed-bean>
 
 

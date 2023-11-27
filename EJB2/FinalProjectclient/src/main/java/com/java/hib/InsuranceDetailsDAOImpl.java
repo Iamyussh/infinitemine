@@ -11,18 +11,53 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 public class InsuranceDetailsDAOImpl {
 			SessionFactory sf;
 			Session session;
 	
+
 	public List<InsuranceDetails> getListOfInsurancedetails(int firstRow, int rowCount) {
 		SessionFactory sf = SessionHelper.getConnection();
 		Session session = sf.openSession();
 		List<InsuranceDetails> cdList = null;
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(InsuranceDetails.class);
+			
+			if(orderById.equals("asc")) {
+				criteria.addOrder(Order.asc("insuranceId"));
+			}
+			
+			else if(orderById.equals("desc")){
+				criteria.addOrder(Order.desc("insuranceId"));
+			}
+			else if(orderByInsuranceName.equals("asc")) {
+				criteria.addOrder(Order.asc("insuranceName"));
+			}
+			else if(orderByInsuranceName.equals("desc")){
+				criteria.addOrder(Order.desc("insuranceName"));
+			}else if(orderByType.equals("asc")) {
+				criteria.addOrder(Order.asc("type"));
+			}else if(orderByType.equals("desc")){
+				criteria.addOrder(Order.desc("type"));
+			}else if(orderByPstart.equals("asc")) {
+				criteria.addOrder(Order.asc("premiumStart"));
+			}else if(orderByPstart.equals("desc")){
+				criteria.addOrder(Order.desc("premiumStart"));
+			}else if(orderByPend.equals("asc")) {
+				criteria.addOrder(Order.asc("premiumEnd"));
+			}else if(orderByPend.equals("asc")){
+				criteria.addOrder(Order.desc("premiumEnd"));
+			}else if(orderByldate.equals("asc")) {
+				criteria.addOrder(Order.asc("launchDate"));
+			}else if(orderByldate.equals("desc")){
+				criteria.addOrder(Order.desc("launchDate"));
+			}else {
+				System.out.println("done");
+			}
 			criteria.setFirstResult(firstRow);
 			criteria.setMaxResults(rowCount);
 		return criteria.list();
@@ -77,7 +112,17 @@ public class InsuranceDetailsDAOImpl {
 		List<InsuranceDetails> insuranceList = cr.list();
 		return insuranceList;
 	}
-	
+	public String searchInsuranceDetails(String insuranceId) {
+		Map<String,Object> sessionMap = 
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sf = SessionHelper.getConnection();
+		session = sf.openSession();
+		Criteria  cr = session.createCriteria(InsuranceDetails.class);
+		cr.add(Restrictions.eq("insuranceId", insuranceId));
+		InsuranceDetails insuranceFound = (InsuranceDetails) cr.uniqueResult();
+		sessionMap.put("insuranceFound", insuranceFound);
+		return "EditInsurance.jsp?faces-redirect=true";
+	}
 	
 	public String generateId() {
 	    sf = SessionHelper.getConnection();
@@ -100,5 +145,188 @@ public class InsuranceDetailsDAOImpl {
 	        }
 	    }
 	}
+	
+	public String UpdateInsurance(InsuranceDetails InsuranceEdit) {
+		sf = SessionHelper.getConnection();
+		session = sf.openSession();
+		Transaction trans = session.beginTransaction();
+		session.update(InsuranceEdit);
+		trans.commit();
+		
+		return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+	}
+	
+	
+			
+	static String orderByInsuranceName="test";
+	static String orderByType="test";
+	static String orderById="test";
+	static String orderByPstart= "test";
+	static String orderByPend = "test";
+	static String orderByldate = "test";
+	
+	
+	public String sortByinsuranceName() {
+		
+		if(orderByInsuranceName.length()==4) {
+			orderByInsuranceName = "asc";
+			
+			
+			orderByType="test";
+			orderById="test";
+			orderByPstart= "test";
+			 orderByPend = "test";
+			 orderByldate = "test";
+			 
+			
+			
+		}else if(orderByInsuranceName.equals("asc")){
+			orderByInsuranceName = "desc";
+			
+			
+			orderByType="test";
+			orderById="test";
+			orderByPstart= "test";
+			 orderByPend = "test";
+			 orderByldate = "test";
+			
+		}
+		return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+	}
+	
+	
+	
+		public String sortorderByType() {
+		
+		if(orderByType.length()==4) {
+			orderByType = "asc";
+			
+			orderByInsuranceName="test";
+			
+			orderById="test";
+			orderByPstart= "test";
+			 orderByPend = "test";
+			 orderByldate = "test";
+			
+		}else if(orderByType.equals("asc")){
+			orderByType = "desc";
+			
+			orderByInsuranceName="test";
+			
+			orderById="test";
+			orderByPstart= "test";
+			 orderByPend = "test";
+			 orderByldate = "test";
+			
+		}
+		return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+	}
+		
+		
+		public String sortorderById() {
+			
+			if(orderById.length()==4) {
+				orderById = "asc";
+				
+				orderByInsuranceName="test";
+				orderByType="test";
+				
+				orderByPstart= "test";
+				 orderByPend = "test";
+				 orderByldate = "test";
+				
+			}else if(orderById.equals("asc")){
+				orderById = "desc";
+				
+				orderByInsuranceName="test";
+				orderByType="test";
+				
+				orderByPstart= "test";
+				 orderByPend = "test";
+				 orderByldate = "test";
+				
+			}
+			return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+		}
+		
+		
+public String sortorderByPstart() {
+			
+			if(orderByPstart.length()==4) {
+				orderByPstart = "asc";
+				
+				orderByInsuranceName="test";
+				orderByType="test";
+				orderById="test";
+				
+				 orderByPend = "test";
+				 orderByldate = "test";
+				
+			}else if(orderByPstart.equals("asc")){
+				orderByPstart = "desc";
+				
+				orderByInsuranceName="test";
+				orderByType="test";
+				orderById="test";
+				
+				 orderByPend = "test";
+				 orderByldate = "test";
+				
+			}
+			return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+		}
+
+public String sortorderByPend() {
+	
+	if(orderByPend.length()==4) {
+		orderByPend = "asc";
+		
+		orderByInsuranceName="test";
+		orderByType="test";
+		orderById="test";
+		orderByPstart= "test";
+		 orderByPend = "test";
+		 orderByldate = "test";
+		
+	}else if(orderByPend.equals("asc")){
+		orderByPend = "desc";
+		
+		orderByInsuranceName="test";
+		orderByType="test";
+		orderById="test";
+		orderByPstart= "test";
+		 orderByPend = "test";
+		 orderByldate = "test";
+	}
+	return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+}
+		
+
+			public String sortorderByldate() {
+	
+					if(orderByldate.length()==4) {
+						orderByldate = "asc";
+						
+						orderByInsuranceName="test";
+						orderByType="test";
+						orderById="test";
+						orderByPstart= "test";
+						 orderByPend = "test";
+						
+		
+					}else if(orderByldate.equals("asc")){
+						orderByldate = "desc";
+						
+						orderByInsuranceName="test";
+						orderByType="test";
+						orderById="test";
+						orderByPstart= "test";
+						 orderByPend = "test";
+						 
+		
+					}
+	return "InsuranceDetailsPagination.jsp?faces-redirect=true";
+}
+	
 
 }

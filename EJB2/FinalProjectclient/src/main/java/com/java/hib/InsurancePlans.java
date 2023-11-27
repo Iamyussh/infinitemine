@@ -7,7 +7,6 @@ public class InsurancePlans {
 	private String insuranceid;
 	private double premiumamt;
 	private double coverageamt;
-	private String benefits;
 	private String discov;
 	
 	
@@ -35,26 +34,18 @@ public class InsurancePlans {
 	public void setCoverageamt(double coverageamt) {
 		this.coverageamt = coverageamt;
 	}
-	public String getBenefits() {
-		return benefits;
-	}
-	public void setBenefits(String benefits) {
-		this.benefits = benefits;
-	}
 	public String getDiscov() {
 		return discov;
 	}
 	public void setDiscov(String discov) {
 		this.discov = discov;
 	}
-	public InsurancePlans(int planid, String insuranceid, double premiumamt, double coverageamt, String benefits,
-			String discov) {
+	public InsurancePlans(int planid, String insuranceid, double premiumamt, double coverageamt,String discov) {
 		super();
 		this.planid = planid;
 		this.insuranceid = insuranceid;
 		this.premiumamt = premiumamt;
 		this.coverageamt = coverageamt;
-		this.benefits = benefits;
 		this.discov = discov;
 	}
 	public InsurancePlans() {
@@ -64,7 +55,7 @@ public class InsurancePlans {
 	@Override
 	public String toString() {
 		return "InsurancePlans [planid=" + planid + ", insuranceid=" + insuranceid + ", premiumamt=" + premiumamt
-				+ ", coverageamt=" + coverageamt + ", benefits=" + benefits + ", discov=" + discov + "]";
+				+ ", coverageamt=" + coverageamt + ", discov=" + discov + "]";
 	}
 	
 	

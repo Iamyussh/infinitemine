@@ -47,11 +47,13 @@ public class InsurancePlansDAOImpl {
 	}
 	
 	public String addInsuranceSubplan(InsurancePlans insuranceplan){
-	
+		System.out.println("Inside add insurance subplan......................");
+		System.out.println("insuranceplanTest "+insuranceplan);
 		Map<String, Object> sessionMap =
 				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		
 		String insid = (String)sessionMap.get("insuranceid");
+		insuranceplan.setInsuranceid(insid);
 		sf = SessionHelper.getConnection();
 		session = sf.openSession();
 		Transaction trans = session.beginTransaction();
@@ -59,7 +61,9 @@ public class InsurancePlansDAOImpl {
 	//	insuranceplan.setInsuranceid(insid);
 		session.save(insuranceplan);
 		trans.commit();
-		
-		return "AddSubplan.jsp?faces-redirect=true";
+		return "";
 	}
+	
+	
+	
 }

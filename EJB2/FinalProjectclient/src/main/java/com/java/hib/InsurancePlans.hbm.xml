@@ -15,9 +15,6 @@
         <property generated="never" lazy="false" name="coverageamt" optimistic-lock="true" type="double" unique="false">
             <column name="Coverage_Amount"/>
         </property>
-        <property generated="never" lazy="false" name="benefits" optimistic-lock="true" type="java.lang.String" unique="false">
-            <column name="Benefits"/>
-        </property>
         <property generated="never" lazy="false" name="discov" optimistic-lock="true" type="java.lang.String" unique="false">
             <column name="diseases_covered"/>
         </property>
