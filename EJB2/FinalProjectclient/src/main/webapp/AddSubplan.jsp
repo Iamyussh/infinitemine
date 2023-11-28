@@ -55,6 +55,7 @@
                 color: #333;
                 text-align: left; /* Align text within the input text */
             }
+            
             .insbutton {
                 background-color: #3498db;
                 color: #fff;
@@ -76,6 +77,15 @@
                 margin-top: 10px;
                 color: #d9534f;
             }
+            
+            img {
+        max-width: 60%; /* Adjust the maximum width as needed */
+        height: auto;
+        margin-top: 10px; /* Adjust the top margin as needed */
+    }
+            
+            
+         
         </style>
     </head>
     <body>
@@ -86,7 +96,7 @@
 
         <h:form id="myForm">
         
-          <img src="leaf.jpg" alt="Image Alt Text" style="max-width: 100%; height: auto;"/>
+          <img src="lic.jpg" alt="Image Alt Text" style="max-width: 100%; height: auto;"/>
             <table>
                 <tr>
                     <th><h:outputText value="Insurance Id" /></th>
@@ -109,7 +119,7 @@
             <h:commandButton styleClass="insbutton" action="#{insuranceController.addInsurancePlans(insurancePlan)}" value="Add"/>
             &nbsp;
 
-            <h:commandButton styleClass="insbutton" action="InsuranceShow.jsp" value="Insurance Details"/>
+            <h:commandButton styleClass="insbutton" action="InsuranceDetailsPagination.jsp" value="Insurance Details"/>
             <h:messages/>
         </h:form>
 

@@ -85,6 +85,7 @@ public class InsuranceController {
 		
 		//String quantityInput1 = double.toString(medicines.getPrice());
 				String priceInput = Double.toString(insurancePlansnew.getPremiumamt());
+				String priceInput1 = Double.toString(insurancePlansnew.getCoverageamt());
 				//String priceInput = Double.parseDouble(medicines.getPrice()));
 			  // String doublePattern = "^-?\\\\d+(\\\\.\\\\d+)?$";
 				//String doublePattern = "[-+]?\\\\d*\\\\.?\\\\d+";
@@ -95,18 +96,37 @@ public class InsuranceController {
 						
 //			 	Price cannot be Null
 					if(insurancePlansnew.getPremiumamt()==0) {
-						 context.addMessage("form:pamt",new FacesMessage("Premium amount cannot be null"));
+						 context.addMessage("pamt",new FacesMessage("Premium amount cannot be null"));
 						return false;
 					}
+					
+					
 				
 				// Price cannot be String
 			if(!Pattern.matches(price, priceInput)) {
 					System.out.println("Err1");
-					context.addMessage("form:pamt",new FacesMessage("Please enter numeric only"));
+					
 					//  context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "quantity cannot be character", null));
+					context.addMessage("pamt", new FacesMessage(
+							FacesMessage.SEVERITY_ERROR,"Please enter numeric only",null));
 					 return false;
 					
 				}
+			
+			if(insurancePlansnew.getCoverageamt()==0) {
+				 context.addMessage("cvgamt",new FacesMessage("Coverage amount cannot be null"));
+				return false;
+			}
+			
+			if(!Pattern.matches(price, priceInput1)) {
+				System.out.println("Err1");
+				
+				//  context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "quantity cannot be character", null));
+				context.addMessage("cvgamt", new FacesMessage(
+						FacesMessage.SEVERITY_ERROR,"Please enter numeric only",null));
+				 return false;
+				
+			}
 		
 		
 		
@@ -137,13 +157,27 @@ public class InsuranceController {
 		    }
 		 
 		 
-		 if (insurancedetailsnew.getPremiumStart() != null && insurancedetailsnew.getPremiumEnd() != null) {
-		        if (insurancedetailsnew.getPremiumStart().after(insurancedetailsnew.getPremiumEnd())) {
-		        	context.addMessage("pstart", new FacesMessage(
-							FacesMessage.SEVERITY_ERROR,"End date must be greater than start date",null));
-		           return false;
-		        }
-		    }
+		 			
+		 if(insurancedetailsnew.getPremiumStart()!=null &&  insurancedetailsnew.getPremiumEnd()==null) {
+		 				 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Please Enter EndDate",null);
+		         		  FacesContext.getCurrentInstance().addMessage(null, message);
+		 				return false;
+		 }
+		 			 if(insurancedetailsnew.getPremiumStart()==null &&  insurancedetailsnew.getPremiumEnd()==null) {
+		 				 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Please Enter StartDate",null);
+		         		  FacesContext.getCurrentInstance().addMessage(null, message);
+		         		  return false;
+		 				
+		 			 }
+		  
+		 		if(insurancedetailsnew.getPremiumStart()!=null || insurancedetailsnew.getPremiumEnd()!=null) {
+		 					 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"End Date should not be before Start Date",null);
+		              		  FacesContext.getCurrentInstance().addMessage(null, message);
+		 				        return false; // Or return an appropriate outcome based on your requirements
+		 				    }
+	
+		 						
+
 		 
 		 if (insurancedetailsnew.getMinPeriod()> insurancedetailsnew.getMaxPeriod()) {
 			 context.addMessage("minperiod", new FacesMessage(

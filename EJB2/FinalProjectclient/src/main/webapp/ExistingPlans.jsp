@@ -21,6 +21,11 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
+            
+              background-image: url('pic1.jpg'); /* Set the path to your background image */
+                background-size: cover; /* Ensures the background image covers the entire viewport */
+                background-position: center; /* Centers the background image */
+                background-repeat: no-repeat; 
             margin: 0;
             padding: 0;
         }
@@ -69,20 +74,40 @@
             text-align: center;
         }
 
-        .commandButtons button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+        
+        
+   .add-plan{
+    background-color: #6e86a1;
+    color: #fff;
+    padding: 8px 11px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.add-plan:hover {
+    background-color: #3b403d;
+}
 
-        .commandButtons button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+.go-to-details-button:hover {
+    background-color: #0056b3;
+}
+
+.go-to-details-button{
+	  background-color: #6e86a1;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+}
+   
+		
+		
     </style>
     </head>
     <body>
@@ -145,14 +170,15 @@
 				<f:facet name="header">
 					<h:outputLabel value="Add Subplan" />
 				</f:facet>
-				<h:commandButton action="#{insurancePlansdao.redirectToAddSubplan(e.insuranceId)}" value="Add plans" />
+				<h:commandButton action="#{insurancePlansdao.redirectToAddSubplan(e.insuranceId)}" value="Add plans" styleClass="add-plan" />
 			</h:column>
 			
 			
         </h:dataTable>
         <br/><br/>
         <center>
-        <h:commandButton action="InsuranceDetailsPagination.jsp" value="Go to insurance details" /><br><br>
+       <h:commandButton action="InsuranceDetailsPagination.jsp" value="Go to insurance details" styleClass="go-to-details-button" /><br><br>
+       
        
         
         </center>

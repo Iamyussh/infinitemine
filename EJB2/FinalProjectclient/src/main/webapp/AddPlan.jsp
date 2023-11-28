@@ -25,7 +25,7 @@
             }
 
             h1 {
-                color: #007bff;
+                color: #2c0981;
                 margin-bottom: 30px;
                  font-weight: bold; /* Make the heading bold */
     			
@@ -89,6 +89,67 @@
             .addbutton:active {
                 background-color: #1e7e34;
             }
+            
+            /* Style for the datepicker container */
+    .ui-datepicker {
+        font-size: 14px; /* Set the font size */
+    }
+ 
+    /* Style for the datepicker header */
+    .ui-datepicker-header {
+        background-color: #4c5daf; /* Set the background color */
+        color: white; /* Set the text color */
+        border: none; /* Remove the border */
+    }
+ 
+    /* Style for the title in the header */
+    .ui-datepicker-title {
+        font-weight: bold; /* Make the title bold */
+    }
+ 
+    /* Style for the datepicker calendar */
+    .ui-datepicker-calendar {
+        background-color: #f0f0f0; /* Set the background color for the calendar */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 4px; /* Add border radius */
+        padding: 2px; /* Add some padding */
+    }
+ 
+    /* Style for the datepicker days */
+    .ui-datepicker-calendar td {
+        padding: 1px; /* Add some padding to the individual days */
+        border: 1px solid #ddd; /* Add border to create grid lines */
+    }
+ 
+    /* Style for the selected date */
+    .ui-datepicker-calendar .ui-state-highlight {
+        background-color: #20ad2b; /* Set the background color for the selected date */
+        color: white; /* Set the text color for the selected date */
+    }
+ 
+    /* Style for the datepicker input field */
+    .datepicker {
+        padding: 5px; /* Add some padding */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 4px; /* Add border radius */
+    }
+ 
+    /* Style for the previous and next month buttons */
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+        background-color: #3a408f; /* Set the background color for the buttons */
+        color: white; /* Set the text color for the buttons */
+        border: none; /* Remove the border */
+        padding: 0px 10px; /* Add padding */
+        border-radius: 4px; /* Add border radius */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+    .eror{
+    
+    color: red;
+    }
+    
         </style>
     </head>
     <body>
@@ -121,10 +182,11 @@
                     <h:inputText id="iname" value="#{insuranceDetails.insuranceName}" />
                     <br /><br />
 
-                    <label for="type">Types</label>
+                     <h:outputLabel for="ptype">Plan types</h:outputLabel>
                     <h:selectOneMenu id="type" value="#{insuranceDetails.type}">
-                        <f:selectItem itemValue="Government" itemLabel="Government" />
-                        <f:selectItem itemValue="Private" itemLabel="Private" />
+                      <f:selectItem itemLabel="Select type" itemValue="" />
+                        <f:selectItem itemValue="Government" itemLabel="Government"/>
+                        <f:selectItem itemValue="Private" itemLabel="Private"/>
                     </h:selectOneMenu>
                     <br/><br/>
 
@@ -145,9 +207,10 @@
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:inputText>
                     <br /><br />
-
-                    <label for="status">Status</label>
+                        
+                      <h:outputLabel for="status">Status</h:outputLabel>   
                     <h:selectOneMenu id="status" value="#{insuranceDetails.status}">
+                      <f:selectItem itemLabel="Select Status" itemValue="" />
                         <f:selectItem itemValue="Active" itemLabel="Active" />
                         <f:selectItem itemValue="Pending" itemLabel="Pending" />
                     </h:selectOneMenu>
@@ -157,7 +220,7 @@
                 <h:commandButton styleClass="addbutton" action="#{insuranceController.addInsurance(insuranceDetails)}" value="Add a plan"/>
             </h:form>
         </center>
-        <h:messages />
+        <h:messages styleClass="eror"/>
     </body>
     </html>
 </f:view>

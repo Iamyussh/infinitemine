@@ -104,16 +104,80 @@ body {
     padding: 15px; /* Add padding for better visual appearance */
     border: 4px solid #ddd; /* Increase the border width */
     background-color: #f9f9f9; /* Set a light background color */
-        border-radius: 60px;
+        border-radius: 19px;
     /* Add more styles as needed */
 }
 
+		.loader-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            .loader {
+                border: 8px solid #f3f3f3;
+                border-top: 8px solid #3498db;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 3s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+		
+		
+	
+			
+			.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+			
 
 
 
     </style>
     </head>
     <body>
+    
+    	<div class="lds-hourglass"></div>
    
         <h:form>
         <center>
@@ -221,6 +285,19 @@ body {
         
         </center>
         </h:form>
+        
+        
+        
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Add this script to toggle the loader on form submission
+     $(window).on('load', function() {
+        $(".lds-hourglass").fadeOut("very slow");
+    });
+
+
+    
+</script>
     </body>
 </html>
 </f:view>

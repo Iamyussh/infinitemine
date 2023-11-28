@@ -9,156 +9,220 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
+    
+    <style type="text/css">
+    
+    
+   
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
         
-  
-    .container {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 8px;
+        background-image: url('pic3.jpg');
+        text-align: center;
+        margin: 0;
+        padding: 0;
     }
 
-    .input-box {
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
+    h2 {
+        color: #007bff;
+        margin-bottom: 30px;
+        font-weight: bold;
+        margin-top: 20px;
     }
-
-    /* Add additional styling as needed */
 
     #form {
-  margin-top: 70px;
-  text-align: center;
-  }
-
-    h2{
-    text-align: center;
-    margin-top: 35px;
-    color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
+    .form-group,
+    .form-group2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group label,
+    .form-group2 label {
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .form-group select,
+    .form-group2 select,
+    .form-group input,
+    .form-group2 input {
+        width: 19%%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        display: inline-block;
+        background-color: #f8f9fa;
+        color: #495057;
+    }
+
+    .form-group select:hover,
+    .form-group2 select:hover,
+    .form-group input:hover,
+    .form-group2 input:hover {
+        border-color: #007bff;
+    }
+
+    .save-button {
+        background-color: #28a745;
+        color: #fff;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .save-button:hover {
+        background-color: #218838;
+    }
+
+    .save-button:active {
+        background-color: #1e7e34;
+    }
+
+    /* Add more styles as needed */
     
+		
+		
+ 
     
-      body {
-                font-family: 'Roboto', sans-serif;
-                 background-image: url('add1.jpg'); /* Set the path to your background image */
-                background-size: cover; /* Ensures the background image covers the entire viewport */
-                background-position: center; /* Centers the background image */
-                background-repeat: no-repeat; /* Prevents the background image from repeating */
-                text-align: center;
-                background-color: #f8f9fa;
-                text-align: center;
-                margin: 0;
-                padding: 0;
-            }
-
-            h1 {
-                color: #007bff;
-                margin-bottom: 30px;
-                 font-weight: bold; /* Make the heading bold */
-    			
-                
-                
-            }
-
-            center {
-                text-align: center;
-            }
-
-            #form {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            label {
-                display: inline-block;
-                width: 150px; /* Adjust the width as needed */
-                margin-bottom: 8px;
-                font-weight: bold;
-            }
-
-            input,
-            select {
-                width: 50%;
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ced4da;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
-
-            select {
-                appearance: none;
-                background: url('https://cdn.jsdelivr.net/gh/GoogleWebComponents/google-web-components/google-logo.png') no-repeat right 10px center;
-                background-size: 20px;
-            }
-            
-            
-            #form #addbutton:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Additional styles for a consistent hover effect across buttons */
-#form h:commandButton:hover {
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Additional styles for a consistent hover effect across links */
-#form a:hover {
-  color: #007bff;
-  text-decoration: underline;
-}
-            
-
-          
+    /* Style for the datepicker container */
+    .ui-datepicker {
+        font-size: 14px; /* Set the font size */
+    }
+ 
+    /* Style for the datepicker header */
+    .ui-datepicker-header {
+        background-color: #4c5daf; /* Set the background color */
+        color: white; /* Set the text color */
+        border: none; /* Remove the border */
+    }
+ 
+    /* Style for the title in the header */
+    .ui-datepicker-title {
+        font-weight: bold; /* Make the title bold */
+    }
+ 
+    /* Style for the datepicker calendar */
+    .ui-datepicker-calendar {
+        background-color: #f0f0f0; /* Set the background color for the calendar */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 4px; /* Add border radius */
+        padding: 2px; /* Add some padding */
+    }
+ 
+    /* Style for the datepicker days */
+    .ui-datepicker-calendar td {
+        padding: 1px; /* Add some padding to the individual days */
+        border: 1px solid #ddd; /* Add border to create grid lines */
+    }
+ 
+    /* Style for the selected date */
+    .ui-datepicker-calendar .ui-state-highlight {
+        background-color: #20ad2b; /* Set the background color for the selected date */
+        color: white; /* Set the text color for the selected date */
+    }
+ 
+    /* Style for the datepicker input field */
+    .datepicker {
+        padding: 5px; /* Add some padding */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 4px; /* Add border radius */
+    }
+ 
+    /* Style for the previous and next month buttons */
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+        background-color: #3a408f; /* Set the background color for the buttons */
+        color: white; /* Set the text color for the buttons */
+        border: none; /* Remove the border */
+        padding: 0px 10px; /* Add padding */
+        border-radius: 4px; /* Add border radius */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+ 
+</style>
     
-    
-  </style>
 
     </head>
     <body>
         <h2>
             <h:outputText value="Edit Insurance" />
         </h2>
+        
+         <!-- DatePicker JavaScript & CSS -->
+    <!-- references to external JavaScript libraries (jQuery and jQuery UI) to enable datepicker functionality. -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
+	<script>
+ 
+	$(document).ready(function() {
+		$( ".datepicker" ).datepicker({
+			dateFormat: 'yy-mm-dd',  <!--set the date format-->
+			changeMonth: true,   <!--  allows users to change the month -->
+			changeYear: true,  <!--  allows users to change the year -->
+			yearRange: "1960:2060"  <!--restrict the selectable yrs -->
+		});
+	});
+        
+        
+        </script>
+        
+        
         <h:form id="form">
-            <div id="form">
-                <h:outputText value="Types " />
-                <h:selectOneMenu value="#{insuranceFound.type}">
-                    <f:selectItem itemValue="Government" itemLabel="Government" />
-                    <f:selectItem itemValue="Private" itemLabel="Private" />
-                </h:selectOneMenu>
-                <br/><br/>
-                <h:outputText value="Premium Start" />
-                <h:inputText id="pstart" value="#{insuranceFound.premiumStart}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
-                </h:inputText>
-                <br /><br />
-                <h:outputText value="Premium End" />
-                <h:inputText id="pend" value="#{insuranceFound.premiumEnd}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
-                </h:inputText>
-                <br /><br />
-                <h:outputText value="Status" />
-                <h:selectOneMenu value="#{insuranceFound.status}">
-                    <f:selectItem itemValue="Active" itemLabel="Active" />
-                    <f:selectItem itemValue="Pending" itemLabel="Pending" />
-                </h:selectOneMenu>
-            </div>
-            <br><br>
-            <h:commandButton id="addbutton" action="#{insuranceDetailsdao.UpdateInsurance(insuranceFound)}" value="Save Changes"/>
+           <div class="form-group">
+    <h:outputText value="Types " />
+    <h:selectOneMenu value="#{insuranceFound.type}">
+        <f:selectItem itemValue="Government" itemLabel="Government" />
+        <f:selectItem itemValue="Private" itemLabel="Private" />
+    </h:selectOneMenu>
+
+    <h:outputText value="Status" />
+    <h:selectOneMenu value="#{insuranceFound.status}">
+        <f:selectItem itemValue="Active" itemLabel="Active" />
+        <f:selectItem itemValue="Pending" itemLabel="Pending" />
+    </h:selectOneMenu>
+</div>
+
+
+
+    <h:outputText value="Premium Start    " />
+    <h:inputText id="pstart" value="#{insuranceFound.premiumStart}"  styleClass="form-control datepicker">
+        <f:convertDateTime pattern="yyyy-MM-dd"/>
+    </h:inputText>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <h:outputText value="Premium End     " />
+    <h:inputText id="pend" value="#{insuranceFound.premiumEnd}"  styleClass="form-control datepicker">
+        <f:convertDateTime pattern="yyyy-MM-dd"/>
+    </h:inputText>
+    
+    
+
+              
+           
             <h:messages />
         </h:form>
+         <br><br>
+            <h:commandButton id="addbutton" action="#{insuranceDetailsdao.UpdateInsurance(insuranceFound)}" value="Save Changes" styleClass="save-button"/>
     </body>
     </html>
 </f:view>
