@@ -1,0 +1,110 @@
+Insurance Plans Management System
+Technology Stack:
+    • Core Java:
+        ◦ Provides foundational syntax, libraries, and features for Java applications.
+    • EJB (Enterprise JavaBeans):
+        ◦ A server-side component architecture for encapsulating business logic.
+    • Hibernate:
+        ◦ An ORM (Object-Relational Mapping) Framework for simplified database interactions.
+    • MySQL:
+        ◦ Used for data storage and retrieval in the context of insurance plans.
+    • JSF (JavaServer Faces):
+        ◦ A Java web application framework for building component-based user interfaces.
+    • CSS:
+        ◦ Controls the layout and appearance of the web pages.
+    • JavaScript:
+        ◦ Enhances interactivity and dynamism of web pages.
+Database: finalproject
+Table Structure:
+Table: Insurance_Details
+    • Insurance_id (Primary Key)
+        ◦ Datatype: VARCHAR(5)
+        ◦ Description: Unique identifier for each insurance, serving as the primary key.
+    • Insurance_Name
+        ◦ Datatype: VARCHAR(255)
+        ◦ Description: Name of the insurance.
+    • Type
+        ◦ Datatype: VARCHAR(255)
+        ◦ Description: Type of insurance.
+    • PremiumStart
+        ◦ Datatype: DATE
+        ◦ Description: Start date for premium coverage.
+    • PremiumEnd
+        ◦ Datatype: DATE
+        ◦ Description: End date for premium coverage.
+    • LaunchDate
+        ◦ Datatype: DATE
+        ◦ Description: Date when the insurance was launched.
+    • Status
+        ◦ Datatype: VARCHAR(10)
+        ◦ Description: Current status of the insurance (e.g., Active, Inactive).
+Table: Insurance_Plans
+    • Plan_id (Primary Key)
+        ◦ Datatype: INT
+        ◦ Description: Auto-incremented primary key for each insurance plan.
+    • Insurance_id (Foreign Key)
+        ◦ Datatype: VARCHAR(5)
+        ◦ Description: Identifier linking the plan to a specific insurance in Insurance_Details.
+        ◦ Foreign Key Reference: Insurance_Details(Insurance_id).
+    • Premium_Amount
+        ◦ Datatype: DECIMAL(10, 2)
+        ◦ Description: The amount of premium associated with the plan.
+    • Coverage_Amount
+        ◦ Datatype: DECIMAL(10, 2)
+        ◦ Description: The maximum coverage amount provided by the plan.
+    • Diseases_Covered
+        ◦ Datatype: VARCHAR(369)
+        ◦ Description: List of diseases covered by the insurance plan.
+POJO Class: 'InsuranceDetails'
+    • Simplifies Java development by providing a flexible approach to representing insurance details in the application.
+    • Enhances code readability, testability, and compatibility with various frameworks.
+POJO Class: 'InsurancePlans'
+    • Simplifies Java development by providing a flexible approach to representing insurance plans in the application.
+    • Enhances code readability, testability, and compatibility with various frameworks.
+
+Insurance Controller
+The InsuranceController class serves as a controller for managing insurance-related operations in the Insurance Plans Management System.
+Properties:
+    • insuranceDetails:
+        ◦ Type: InsuranceDetails
+        ◦ Description: Holds information related to insurance details.
+    • insurancePlans:
+        ◦ Type: InsurancePlans
+        ◦ Description: Holds information related to insurance plans.
+    • insuranceDetailsdao:
+        ◦ Type: InsuranceDetailsDAOImpl
+        ◦ Description: Data Access Object (DAO) for handling database operations related to insurance details.
+    • insurancePlansdao:
+        ◦ Type: InsurancePlansDAOImpl
+        ◦ Description: Data Access Object (DAO) for handling database operations related to insurance plans.
+Methods:
+addInsurance(insurancedetailsnew: InsuranceDetails): String
+    • Description: Adds new insurance details to the system after validation.
+    • Parameters:
+        ◦ insurancedetailsnew: An instance of InsuranceDetails containing the new insurance details.
+    • Returns:
+        ◦ Type: String
+        ◦ Description: A navigation string to redirect to the appropriate page.
+addInsurancePlans(insurancePlansnew: InsurancePlans): String
+    • Description: Adds new insurance plans to the system after validation.
+    • Parameters:
+        ◦ insurancePlansnew: An instance of InsurancePlans containing the new insurance plan details.
+    • Returns:
+        ◦ Type: String
+        ◦ Description: A navigation string to redirect to the appropriate page.
+addinsuranceplansvalidate(insurancePlansnew: InsurancePlans): boolean
+    • Description: Validates the input data for adding new insurance plans.
+    • Parameters:
+        ◦ insurancePlansnew: An instance of InsurancePlans containing the new insurance plan details.
+    • Returns:
+        ◦ Type: boolean
+        ◦ Description: true if the input data is valid; otherwise, false.
+addinsurancevalidate(insurancedetailsnew: InsuranceDetails): boolean
+    • Description: Validates the input data for adding new insurance details.
+    • Parameters:
+        ◦ insurancedetailsnew: An instance of InsuranceDetails containing the new insurance details.
+    • Returns:
+        ◦ Type: boolean
+        ◦ Description: true if the input data is valid; otherwise, false.
+
+
