@@ -18,12 +18,7 @@
         <property generated="never" lazy="false" name="premiumEnd" optimistic-lock="true" type="java.sql.Date" unique="false">
             <column name="PremiumEnd"/>
         </property>
-        <property generated="never" lazy="false" name="minPeriod" optimistic-lock="true" type="int" unique="false">
-            <column name="MinPeriod"/>
-        </property>
-        <property generated="never" lazy="false" name="maxPeriod" optimistic-lock="true" type="int" unique="false">
-            <column name="MaxPeriod"/>
-        </property>
+      
         <property generated="never" lazy="false" name="launchDate" optimistic-lock="true" type="java.sql.Date" unique="false">
             <column name="LaunchDate"/>
         </property>
