@@ -11,89 +11,163 @@
 <title>JSP Page</title>
 <style>
 
-    body {
-                    font-family: Arial, sans-serif;
-                    background-color: #f2f2f2;
-                    margin: 0;
-                    padding: 0;
-                }
+body {
+    font-family: 'lato', sans-serif;
+    background-image: url('show.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f2f2f2;
+    margin: -89px;
+    padding: 0;
+    margin-right: -147px;
+}
 
-                center {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100vh;
-                }
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-                h2 {
-                    color: #007bff;
-                    margin-bottom: 30px;
-                }
+h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
 
-                h:form {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #fff;
-                    border-radius: 8px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                }
+h:form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-                h:dataTable {
-                    width: 150%;
-                    border-collapse: collapse;
-                    margin-top: 20px;
-                }
+.
 
-                h:column {
-                    padding: 50px;
-                    border-bottom: 1px solid #ddd;
-                }
+h:column {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
 
-                h:column th {
-                    background-color: #f2f2f2;
-                    padding: 50px;
-                    text-align: left;
-                    border-bottom: 1px solid #ddd;
-                }
+h:column th {
+    background-color: #555; /* Darker background color for table header */
+    color: #fff; /* Text color for table header */
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-                h:column td:hover {
-                    background-color: #e0e0e0;
-                }
+h:column td:hover {
+    background-color: #444; /* Darker background color on hover */
+}
 
-                h:commandButton {
-                    display: inline-block;
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    text-align: center;
-                    text-decoration: none;
-                    cursor: pointer;
-                    border: 1px solid #3498db;
-                    color: #3498db;
-                    background-color: #ffffff;
-                    border-radius: 5px;
-                    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-                    margin-top: 10px;
-                }
+/* Rest of your styles... */
 
-                h:commandButton:hover {
-                    background-color: olive;
-                    color: #ffffff;
-                    transform: scale(1.1);
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                }
+                
+                
+           tab {
+    border-collapse: collapse;
+    margin-top: 250px;
+    
+    border-collapse: separate;
+    
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    
+    font-size: 16px; /* Set your desired font size */
+    color: #fff; /* Text color for table */
+}
+
+.tab th, .tab td {
+    padding: 10px;
+    border-bottom: 1px solid ;
+}
+
+
+
+.tab td:hover {
+    background-color: #80abe0; /* Darker background color on hover */
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: #f03355 #0000;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+@keyframes l16 { 
+  100%{transform: rotate(1turn)}
+}
+
+.go-to-details-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.go-to-details-button:hover {
+    background-color: #c51f1f; /* Darker Green on hover */
+}
+
+                
+                
+                
 </style>
 
 </head>
 <body>
 	<h:form>
 		<center>
+		
+		<div class="loader"></div>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<script>
+    // Add this script to toggle the loader on form submission
+    $(document).ready(function() {
+			$(".loader").fadeOut("slow");
+		});
+     $(window).on('load', function() {
+        $(".loader").fadeOut("very slow");
+    });
+		</script>
 			<h2>
 				<h:outputText value="Insurance Plans" />
 			</h2>
 		<h:dataTable value="#{insurancePlansdao.showPlans(insuranceid)}" var="e"
-			border="3">
+			border="3" styleClass="tab">
 			<h:column>
 				<f:facet name="header">
 					<h:outputLabel value="Plan id" />
@@ -131,15 +205,15 @@
 				<h:outputText value="#{e.discov}" />
 			</h:column>
 			
-			<h:column>
-				<f:facet name="header">
-					<h:outputLabel value="Claim Policy" />
-				</f:facet>
-				<h:commandButton action="#{insurancePlansdao.showPlans(e.insuranceid)}" value="Take Policy" />
-			</h:column>
+			
 			
 		
 			</h:dataTable>
+			<br>
+			<br>
+			    <h:commandButton action="InsuranceDetailsPagination.jsp" value="Go to insurance details" styleClass="go-to-details-button" />
+			
+			
 		</center>
 	</h:form>
 </body>
