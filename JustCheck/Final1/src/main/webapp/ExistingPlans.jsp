@@ -15,6 +15,8 @@
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <style>
         
+      
+        
         html{
         
         background : rgb{2.0,36};
@@ -166,6 +168,18 @@
 }
 
 
+.insid{
+
+background-color: #6e86a1;
+    color: #fff;
+    padding: 8px 11px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
 
 
 
@@ -185,51 +199,133 @@
                 
             </center>
         <h:dataTable value="#{paginationDao.getInsuranceList()}" var="e" border="3">
-        	    <h:column>
-                    <f:facet name="header">
-                    	<h:outputLabel value="Insurance id" />
-                    </f:facet>
-                    <h:outputText value="#{e.insuranceId}"/>
-                </h:column>
-                    <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Insurance Name" />
-                    </f:facet>
-                    <h:outputText value="#{e.insuranceName}"/>
-                </h:column>
-                 <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Type" />
-                    </f:facet>
-                    <h:outputText value="#{e.type}"/>
-                </h:column>
-                    <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Premium Start" />
-                    </f:facet>
-                    <h:outputText value="#{e.premiumStart}"/>
-                </h:column>
-                    <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Premium End" />
-                    </f:facet>
-                    <h:outputText value="#{e.premiumEnd}"/>
-                </h:column>
-                 
-                
-                 <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Launch Date" />
-                    </f:facet>
-                    <h:outputText value="#{e.launchDate}"/>
-                </h:column>
-                
-                  <h:column>
-                     <f:facet name="header">
-                    	<h:outputLabel value="Status" />
-                    </f:facet>
-                    <h:outputText value="#{e.status}"/>
-                </h:column>
+        	   
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Insurance Id">
+						<h:commandLink action="#{insuranceDetailsdao.sortorderById()}"
+							style="text-decoration:none">
+                &nbsp; &nbsp;<div style="display: inline-flex;">
+								 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color: white;">&#x25BC;</p>
+							</div>
+						</h:commandLink>
+					</h:outputLabel>
+				</f:facet>
+				
+				<h:commandButton
+					action="#{insuranceDetailsdao.searchInsuranceDetails(e.insuranceId)}"
+					value="#{e.insuranceId}" style="text-decoration:none" styleClass="insid"/>
+					
+					
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Insurance Name">
+						<h:commandLink
+							action="#{insuranceDetailsdao.sortByinsuranceName()}"
+							style="text-decoration:none">
+      		  &nbsp; &nbsp;<div style="display: inline-flex;">
+								 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color: white;">&#x25BC;</p>
+							</div>
+						</h:commandLink>
+					</h:outputLabel>
+				</f:facet>
+
+				<h:outputText value="#{e.insuranceName}" />
+
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Types">
+						<h:commandLink
+							action="#{insuranceDetailsdao.sortorderByType()}"
+							style="text-decoration:none">
+      		  <div style="display: inline-flex;">
+								 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color: white;">&#x25BC;</p>
+							</div>
+						</h:commandLink>
+					</h:outputLabel>
+				</f:facet>
+
+				<h:outputText value="#{e.type}" />
+
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+				<h:outputLabel value="Premium Start">
+					<h:commandLink action="#{insuranceDetailsdao.sortorderByPstart()}"
+						style="text-decoration:none">
+						
+      		    &nbsp; &nbsp;<div style="display: inline-flex;">
+							<p style="color:white;" class="arrow">&#x25B2;</p>
+							&nbsp;
+							<p style="color:white" class="arrow">&#x25BC;</p>
+						</div>
+					</h:commandLink>
+					</h:outputLabel>
+				</f:facet>
+				<h:outputText value="#{e.premiumStart}" />
+
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+						<h:outputLabel value="Preminum End">
+					<h:commandLink action="#{insuranceDetailsdao.sortorderByPend()}"
+						style="text-decoration:none">
+      		    &nbsp; &nbsp;<div style="display: inline-flex;">
+						 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color:white;">&#x25BC;</p>
+						</div>
+					</h:commandLink>
+					</h:outputLabel>
+				</f:facet>
+				<h:outputText value="#{e.premiumEnd}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+				<h:outputLabel value="Launch Date" />
+					<h:commandLink action="#{insuranceDetailsdao.sortorderByldate()}"
+						style="text-decoration:none">
+						
+						<div style="display: inline-flex;">
+						 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color: white;">&#x25BC;</p>
+						</div>
+					</h:commandLink>
+				</f:facet>
+				<h:outputText value="#{e.launchDate}" />
+			</h:column>
+			
+			
+			<h:column>
+				<f:facet name="header">
+				<h:outputLabel value="Status"/>
+					<h:commandLink action="#{insuranceDetailsdao.sortorderBystatus()}"
+						style="color:white">
+						
+						<div style="display: inline-flex;">
+							 <p style="color: white;">&#x25B2;</p>
+                    &nbsp;
+                    <p style="color: white;">&#x25BC;</p>
+						</div>
+					</h:commandLink>
+				</f:facet>
+				<h:outputText value="#{e.status}" />
+			</h:column>
                 
                
 			
@@ -262,14 +358,11 @@
             <br />
          
              <center>
-       <h:commandButton action="InsuranceDetailsPagination.jsp" value="Go to insurance details" styleClass="go-to-details-button" /><br><br>
+       <h:commandButton action="InsuranceDetailsPagination.jsp" value="Go to insurance details" styleClass="go-to-details-button" />
         
         </center>	
         </h:form>
-        
-       
-        
-       
+   
     </body>
    		
    			<script>

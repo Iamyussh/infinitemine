@@ -38,6 +38,7 @@ public class PaginationBean {
 		}
 		return cdList;
 	}
+	
 	public void setCdList(List<InsuranceDetails> cdList) {
 		this.cdList = cdList;
 	}

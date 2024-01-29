@@ -56,7 +56,7 @@ label {
 
 input, select {
 	width: 50%;
-	padding: 10px;
+	padding: 7px;
 	margin-bottom: 15px;
 	border: 1px solid #ced4da;
 	border-radius: 4px;
@@ -69,6 +69,7 @@ select {
 		url('https://cdn.jsdelivr.net/gh/GoogleWebComponents/google-web-components/google-logo.png')
 		no-repeat right 10px center;
 	background-size: 20px;
+	font-weight: 900;
 }
 
 .addbutton {
@@ -81,6 +82,21 @@ select {
 	font-size: 16px;
 	transition: background-color 0.3s;
 	margin-top: 10px;
+	width: 120px;
+}
+
+.backbutton {
+	background-color: #28a745;
+	color: #fff;
+	padding: 11px 24px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+	margin-top: 10px;
+	width: 80px;
+	margin-left: 130px;
 }
 
 .addbutton:hover {
@@ -99,14 +115,17 @@ select {
 
 /* Style for the datepicker header */
 .ui-datepicker-header {
-	background-color: #4c5daf; /* Set the background color */
+	background-color: #48a958; /* Set the background color */
 	color: white; /* Set the text color */
 	border: none; /* Remove the border */
+	margin-left: 280px;
+	margin-top: -26px;
 }
 
 /* Style for the title in the header */
 .ui-datepicker-title {
 	font-weight: bold; /* Make the title bold */
+	color: black;
 }
 
 /* Style for the datepicker calendar */
@@ -116,6 +135,7 @@ select {
 	border: 1px solid #ccc; /* Add a border */
 	border-radius: 4px; /* Add border radius */
 	padding: 2px; /* Add some padding */
+	margin-left: 280px;
 }
 
 /* Style for the datepicker days */
@@ -136,11 +156,28 @@ select {
 	padding: 5px; /* Add some padding */
 	border: 1px solid #ccc; /* Add a border */
 	border-radius: 4px; /* Add border radius */
+	color: #141010;
+}
+
+.ui-datepicker-month {
+	color: black;
+	font-weight: bold;
+	padding-left: 14px;
+	width: 56px;
+	font-weight: bold;
+}
+
+.ui-datepicker-year {
+	color: black;
+	font-weight: bold;
+	padding-left: 14px;
+	width: 56px;
+	font-weight: bold;
 }
 
 /* Style for the previous and next month buttons */
 .ui-datepicker-prev, .ui-datepicker-next {
-	background-color: #3a408f;
+	background-color: #8f6d3a;
 	/* Set the background color for the buttons */
 	color: white; /* Set the text color for the buttons */
 	border: none; /* Remove the border */
@@ -155,26 +192,28 @@ select {
 
 /* HTML: <div class="loader"></div> */
 .loader {
-margin-left: 628px;
-  width: 60px;
-  aspect-ratio: 1;
-  background: 
-    linear-gradient(45deg,#60B99A 50%,#0000 0),
-    linear-gradient(45deg,#0000 50%,#60B99A 0),
-    linear-gradient(-45deg,#f77825 50%,#0000 0),
-    linear-gradient(-45deg,#0000 50%,#f77825 0),
-    linear-gradient(#554236 0 0);
-  background-size: 50% 50%;
-  background-repeat: no-repeat;
-  animation: l18 1.5s infinite;
+	margin-left: 628px;
+	width: 60px;
+	aspect-ratio: 1;
+	background: linear-gradient(45deg, #60B99A 50%, #0000 0),
+		linear-gradient(45deg, #0000 50%, #60B99A 0),
+		linear-gradient(-45deg, #f77825 50%, #0000 0),
+		linear-gradient(-45deg, #0000 50%, #f77825 0),
+		linear-gradient(#554236 0 0);
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	animation: l18 1.5s infinite;
 }
-@keyframes l18{
-  0%   {background-position:50% 50%,50% 50%,50%  50% ,50% 50%,50% 50%}
-  25%  {background-position:0  100%,100%  0,50%  50% ,50% 50%,50% 50%}
-  50%  {background-position:0  100%,100%  0,100% 100%,0   0  ,50% 50%}
-  75%  {background-position:50% 50%,50% 50%,100% 100%,0   0  ,50% 50%}
-  100% {background-position:50% 50%,50% 50%,50%  50% ,50% 50%,50% 50%}
+
+a {
+	text-decoration: none;
 }
+
+@
+keyframes l18 { 0% {
+	background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%
+}
+
 
 
 </style>
@@ -186,28 +225,29 @@ margin-left: 628px;
 
 
 
-	<center>
-		<br />
-		<h1>
-			<h:outputText value="Create a new plan" />
-		</h1>
-
-		
+	<br />
+	<h1>
+		<h:outputText value="Create a new plan" />
+	</h1>
 
 
-<div class="loader"></div>
 
-		<h:outputText value="#{details}" />
-		
-		<h:form id="form">
-		<!-- DatePicker JavaScript & CSS -->
-<!-- references to external JavaScript libraries (jQuery and jQuery UI) to enable datepicker functionality. -->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- 
-<script>
+
+	<div class="loader"></div>
+
+
+
+	<h:form id="form">
+
+		<center>
+			<!-- DatePicker JavaScript & CSS -->
+			<!-- references to external JavaScript libraries (jQuery and jQuery UI) to enable datepicker functionality. -->
+			<script type="text/javascript"
+				src="https://code.jquery.com/jquery-1.12.4.js"></script>
+			<script type="text/javascript"
+				src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+			<script>
  
 	$(document).ready(function() {
 		$( ".datepicker" ).datepicker({
@@ -230,7 +270,8 @@ margin-left: 628px;
 	</script>
 			<div id="form">
 				<label for="iname">Insurance name</label>
-				<h:inputText id="iname" value="#{insuranceDetails.insuranceName}" />
+				<h:inputText id="iname" value="#{insuranceDetails.insuranceName}"
+					autocomplete="off" />
 
 				<br />
 				<h:message for="iname" styleClass="eror" />
@@ -243,29 +284,30 @@ margin-left: 628px;
 					<f:selectItem itemValue="Private" itemLabel="Private" />
 				</h:selectOneMenu>
 				<br />
-				<br/> <h:outputLabel for="pstart">Premium Start</h:outputLabel>
-				<h:inputText id="pstart" value="#{insuranceDetails.premiumStart}" 
-						styleClass="form-control datepicker" autocomplete="off">
+				<h:message for="type" styleClass="eror" />
+				<br />
+				<h:outputLabel for="pstart">Premium Start</h:outputLabel>
+				<h:inputText id="pstart" value="#{insuranceDetails.premiumStart}"
+					styleClass="form-control datepicker" autocomplete="off">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
-				<br/>
-				
+				<br />
+
 				<h:message for="pstart" styleClass="eror" />
-				<br /> 
-				
+				<br />
+
 				<h:outputLabel for="pend">Premium End</h:outputLabel>
 				<h:inputText id="pend" value="#{insuranceDetails.premiumEnd}"
-				
-				styleClass="form-control datepicker" autocomplete="off">
+					styleClass="form-control datepicker" autocomplete="off">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
-				<br/>
-			
-				
+				<br />
+
+
 				<h:message for="pend" styleClass="eror" />
 				<br /> <label for="ldate">Launch Date</label>
 				<h:inputText id="ldate" value="#{insuranceDetails.launchDate}"
-				styleClass="form-control datepicker" autocomplete="off"	>
+					styleClass="form-control datepicker" autocomplete="off">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
 				<br />
@@ -277,23 +319,26 @@ margin-left: 628px;
 					<f:selectItem itemValue="Active" itemLabel="Active" />
 					<f:selectItem itemValue="Pending" itemLabel="Pending" />
 				</h:selectOneMenu>
-		
-		
+
+
 				<br>
+				<h:message for="status" styleClass="eror" />
 				<br>
 			</div>
 			<h:commandButton styleClass="addbutton"
 				action="#{insuranceController.addInsurance(insuranceDetails)}"
-				value="Add a plan" onclick="showLoader()" />
-		</h:form>
-	</center>
+				value="Add a plan" onclick="showLoader()"
+				title="Click to add a plan" />
+
+			<h:commandButton styleClass="backbutton"
+				action="InsuranceDetailsPagination.jsp" value="Back"
+				onclick="showLoader()" />
+		</center>
+	</h:form>
 
 
 
-	
 
-
-    
 </body>
 	</html>
 </f:view>

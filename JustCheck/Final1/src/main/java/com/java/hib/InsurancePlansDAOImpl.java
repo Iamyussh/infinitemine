@@ -14,58 +14,51 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 public class InsurancePlansDAOImpl {
-	
+
 	SessionFactory sf;
 	Session session;
-	
+
 	public String redirectToInsurancePlan(String insuranceid) {
-		Map<String, Object> sessionMap =
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		System.out.println("insuranceid is : "+insuranceid);
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		System.out.println("insuranceid is : " + insuranceid);
 		sessionMap.put("insuranceid", insuranceid);
 		return "ShowInsurancePlans.jsp?faces-redirect=true";
 	}
-	
-	public List<InsurancePlans> showPlans(String insuranceid){
-		Map<String, Object> sessionMap =
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+
+	public List<InsurancePlans> showPlans(String insuranceid) {
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("insuranceid", insuranceid);
 		sf = SessionHelper.getConnection();
 		session = sf.openSession();
 		List<InsurancePlans> cdList = null;
 		session.beginTransaction();
 		Criteria criteria = session.createCriteria(InsurancePlans.class);
-		criteria.add(Restrictions.eqOrIsNull("insuranceid",insuranceid ));
-	return criteria.list();
-		
+		criteria.add(Restrictions.eqOrIsNull("insuranceid", insuranceid));
+		return criteria.list();
+
 	}
-	
+
 	public String redirectToAddSubplan(String insuranceId) {
-		Map<String, Object> sessionMap =
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("insuranceid", insuranceId);
 		return "AddSubplan.jsp?faces-redirect=true";
 	}
-	
-	public String addInsuranceSubplan(InsurancePlans insuranceplan){
-		Map<String, Object> sessionMap =
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		String insid = (String)sessionMap.get("insuranceid");
-		System.out.println("check null : "+insid);
+
+	public String addInsuranceSubplan(InsurancePlans insuranceplan) {
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		String insid = (String) sessionMap.get("insuranceid");
+		System.out.println("check null : " + insid);
 		insuranceplan.setInsuranceid(insid);
 		sf = SessionHelper.getConnection();
 		session = sf.openSession();
 		Transaction trans = session.beginTransaction();
-		
-	//	insuranceplan.setInsuranceid(insid);
+
+		// insuranceplan.setInsuranceid(insid);
 		session.save(insuranceplan);
-		trans.commit();	
-		
-	
+		trans.commit();
+
 		sessionMap.put("success","SubPlan was added successfully");
 		return "AddSubplan.jsp?faces-redirect=true";
 	}
-	
-	
-	
+
 }

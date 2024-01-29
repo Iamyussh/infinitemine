@@ -137,7 +137,11 @@
 }
 	
 	.succ{
-   color:white;
+   color:green;
+  
+    margin-left: 82px;
+   background-color:white
+    padding: 15px;
    
 }
 .blurred {
@@ -246,7 +250,7 @@
 
         <h:form id="myForm">
          <h:outputText value="#{success}" styleClass="succ" />
-          <img src="lic.jpg" alt="Image Alt Text" style="max-width:60%; height:150; margin:40px;margin-left: 110px;"/>
+          <img src="lic.png" alt="Image Alt Text" style="max-width:60%; height:150; margin:40px;margin-left: 36px;"/>
             <table>
                 <tr>
                     <th><h:outputText value="Insurance Id" /></th>
@@ -269,8 +273,8 @@
                 </tr>
                 <tr>
                     <th><h:outputText value="Diseases Covered" /></th>
-                    <td><h:inputText id="dis" value="#{insuranceplan.discov}"/>
-                     <h:message for="dis" style="color: red;" />
+                    <td><h:inputText id="dis" value="#{insuranceplan.discov}" autocomplete="off"/>
+                     <h:message for="dis" style="color: red;"/>
                     </td>
                 </tr>
             </table>

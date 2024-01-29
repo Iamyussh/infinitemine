@@ -76,6 +76,18 @@
 
 </managed-bean>
 
+<managed-bean>
+		<managed-bean-name>admin</managed-bean-name>
+		<managed-bean-class>com.java.hib.AdminLogin</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>adminDao</managed-bean-name>
+		<managed-bean-class>com.java.hib.AdminLoginImpl</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
 
 <application>
 	 	<message-bundle>
